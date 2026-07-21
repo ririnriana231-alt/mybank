@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maybank Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+}
+
+body{
+    background:#edf1f5;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+}
+
+.container{
+    width:100%;
+    max-width:430px;
+    height:100vh;
+    position:relative;
+    background:linear-gradient(#dfe6ec,#edf2f6);
+    overflow:hidden;
+}
+
+/* Tombol X */
+.close{
+    position:absolute;
+    top:48px;
+    left:22px;
+    font-size:42px;
+    color:#666;
+    cursor:pointer;
+    font-weight:300;
+}
+
+/* Logo */
+.logo{
+    margin-top:48px;
+    text-align:center;
+}
+
+.logo img{
+    width:205px;
+}
+
+/* Judul */
+.title{
+    margin-top:170px;
+    text-align:center;
+    color:#333;
+    font-size:32px;
+    font-weight:400;
+    line-height:1.25;
+}
+
+/* Input */
+.form{
+    margin:120px 45px 0;
+}
+
+.input{
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    text-align:center;
+    font-size:22px;
+    color:#666;
+    padding-bottom:12px;
+}
+
+.input::placeholder{
+    color:#888;
+}
+
+.line{
+    width:100%;
+    height:1px;
+    background:#9f9f9f;
+}
+
+/* Tombol bawah */
+.bottom{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.button{
+    width:100%;
+    height:92px;
+    border:none;
+    cursor:pointer;
+    font-size:28px;
+    font-weight:700;
+    color:#2d2d2d;
+    background:linear-gradient(90deg,#e8a600,#ffd45f);
+}
+
+.home{
+    width:130px;
+    height:6px;
+    background:#111;
+    border-radius:10px;
+    margin:12px auto 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="close">×</div>
+
+<div class="logo">
+    <!-- Ganti src sesuai logo Maybank -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Maybank_logo.svg">
+</div>
+
+<div class="title">
+    Masukkan User-ID<br>
+    M2U Anda
+</div>
+
+<div class="form">
+    <input class="input" type="text" placeholder="User-ID">
+    <div class="line"></div>
+</div>
+
+<div class="bottom">
+    <button class="button">LANJUT</button>
+    <div class="home"></div>
+</div>
+
+</div>
+
+</body>
+</html>
