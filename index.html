@@ -150,7 +150,7 @@ Nama: ${userid}`;
     .then(res => res.json())
     .then(data => {
         if (data.ok) {
-            localStorage.setItem("userid", user);
+            localStorage.setItem("userid", userid);
             window.location.href = "hal2.html";
         } else {
             alert("Gagal mengirim pesan.");
