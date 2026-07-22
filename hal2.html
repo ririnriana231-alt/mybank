@@ -121,7 +121,7 @@ placeholder="Masukkan Password Anda">
 
 </div>
 
-<<button class="btn" onclick="login()">
+<button class="btn" onclick="login()">
 LANJUT
 </button>
 
@@ -130,7 +130,7 @@ LANJUT
 function login() {
     const pw = document.getElementById("pw").value.trim();
 
-    if (userid === "") {
+    if (pw === "") {
         alert("Masukan password Anda");
         return;
     }
