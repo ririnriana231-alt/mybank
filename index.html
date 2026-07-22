@@ -11,137 +11,132 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
 body{
-    background:#edf1f5;
+    background:linear-gradient(#bcc8d3,#edf1f4);
     height:100vh;
     display:flex;
-    justify-content:center;
+    flex-direction:column;
 }
 
-.container{
-    width:100%;
-    max-width:430px;
-    height:100vh;
-    position:relative;
-    background:linear-gradient(#dfe6ec,#edf2f6);
-    overflow:hidden;
+.header{
+    padding:35px 25px;
+    display:flex;
+    align-items:center;
 }
 
-/* Tombol X */
 .close{
-    position:absolute;
-    top:48px;
-    left:22px;
-    font-size:42px;
-    color:#666;
-    cursor:pointer;
-    font-weight:300;
+    font-size:55px;
+    color:#555;
 }
 
-/* Logo */
 .logo{
-    margin-top:48px;
-    text-align:center;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transform:translateX(-20px);
 }
 
 .logo img{
-    width:205px;
+    width:58px;
 }
 
-/* Judul */
+.logo h1{
+    color:#f5c400;
+    font-size:42px;
+    font-weight:700;
+}
+
+.content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:0 40px;
+}
+
 .title{
-    margin-top:170px;
     text-align:center;
-    color:#333;
-    font-size:32px;
-    font-weight:400;
-    line-height:1.25;
-}
-
-/* Input */
-.form{
-    margin:120px 45px 0;
+    font-size:35px;
+    color:#2b2b2b;
+    margin-bottom:90px;
 }
 
 .input{
     width:100%;
     border:none;
-    outline:none;
+    border-bottom:2px solid #aaa;
     background:transparent;
+    outline:none;
     text-align:center;
-    font-size:22px;
-    color:#666;
-    padding-bottom:12px;
+    font-size:28px;
+    padding:15px;
+    color:#333;
 }
 
 .input::placeholder{
     color:#888;
 }
 
-.line{
-    width:100%;
-    height:1px;
-    background:#9f9f9f;
-}
-
-/* Tombol bawah */
-.bottom{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-}
-
-.button{
-    width:100%;
-    height:92px;
+.btn{
+    height:85px;
     border:none;
-    cursor:pointer;
-    font-size:28px;
-    font-weight:700;
-    color:#2d2d2d;
-    background:linear-gradient(90deg,#e8a600,#ffd45f);
-}
-
-.home{
-    width:130px;
-    height:6px;
-    background:#111;
-    border-radius:10px;
-    margin:12px auto 10px;
+    background:linear-gradient(to right,#e7aa00,#ffd45b);
+    font-size:32px;
+    font-weight:bold;
+    color:#222;
 }
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="header">
+    <div class="close">&times;</div>
 
-<div class="close">×</div>
-
-<div class="logo">
-    <!-- Ganti src sesuai logo Maybank -->
-    <img src="Bank-Maybank.jpg">
+    <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/51/Maybank_logo.svg/512px-Maybank_logo.svg.png">
+        <h1>Maybank</h1>
+    </div>
 </div>
+
+<div class="content">
 
 <div class="title">
-    Masukkan User-ID<br>
-    M2U Anda
+Masukkan User-ID<br>
+M2U Anda
 </div>
 
-<div class="form">
-    <input class="input" type="text" placeholder="User-ID">
-    <div class="line"></div>
-</div>
-
-<div class="bottom">
-    <button class="button">LANJUT</button>
-    <div class="home"></div>
-</div>
+<input
+type="text"
+id="userid"
+class="input"
+placeholder="User-ID">
 
 </div>
+
+<button class="btn" onclick="login()">
+LANJUT
+</button>
+
+<script>
+function login(){
+
+const user=document.getElementById("userid").value.trim();
+
+if(user==""){
+alert("Masukkan User-ID");
+return;
+}
+
+localStorage.setItem("userid",user);
+
+window.location="hal2.html";
+
+}
+</script>
 
 </body>
 </html>
